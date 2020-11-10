@@ -41,11 +41,11 @@ class MyStack : Stack
             },
         });
 
-        // var appInsights = new Insights("appInsights", new InsightsArgs
-        // {
-        //     ApplicationType = "web",
-        //     ResourceGroupName = resourceGroup.Name
-        // });
+        var appInsights = new Insights("appInsights", new InsightsArgs
+        {
+            ApplicationType = "web",
+            ResourceGroupName = resourceGroup.Name
+        });
 
         var webapp = new AppService("webapp", new AppServiceArgs
         {
@@ -54,7 +54,7 @@ class MyStack : Stack
             AppSettings =
             {
                 // {"WEBSITE_RUN_FROM_PACKAGE", codeBlobUrl},
-                // {"APPINSIGHTS_INSTRUMENTATIONKEY", appInsights.InstrumentationKey},
+                {"APPINSIGHTS_INSTRUMENTATIONKEY", appInsights.InstrumentationKey},
                 // {"APPLICATIONINSIGHTS_CONNECTION_STRING", appInsights.InstrumentationKey.Apply(key => $"InstrumentationKey={key}")},
                 {"ApplicationInsightsAgent_EXTENSION_VERSION", "~2"},
             },
